@@ -10,30 +10,30 @@ const forbidden = 403;
 const internalError = 500;
 
 const nicknameExists = {
-    statusCode: conflict,
-    error: {
-        message: 'nickname already exists',
-    },
+  statusCode: conflict,
+  error: {
+    message: 'nickname already exists',
+  },
 };
 const nicknameNotExists = {
-    statusCode: notFound,
-    error: {
-        message: 'nickname does not exist',
-    },
+  statusCode: notFound,
+  error: {
+    message: 'nickname does not exist',
+  },
 };
 
 const UserNotFound = {
-    statusCode: notFound,
-    error: {
-        message: 'user not found',
-    },
+  statusCode: notFound,
+  error: {
+    message: 'user not found',
+  },
 };
 
 module.exports = {
-    internalError,
-    update,
-    sucess,
-    nicknameExists,
-    nicknameNotExists,
-    UserNotFound,
-}
+  internalError,
+  update,
+  sucess,
+  nicknameExists,
+  nicknameNotExists,
+  UserNotFound,
+};
