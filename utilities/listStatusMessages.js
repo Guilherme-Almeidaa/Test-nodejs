@@ -22,6 +22,20 @@ const nicknameNotExists = {
   },
 };
 
+const fieldNull = (field) => ({
+  statusCode: badRequest,
+  error: {
+    message: `field ${field} required`,
+  },
+});
+
+const fieldInvalid = (field) => ({
+  statusCode: badRequest,
+  error: {
+    message: `${field} field cannot be empty`,
+  },
+});
+
 const UserNotFound = {
   statusCode: notFound,
   error: {
@@ -36,4 +50,6 @@ module.exports = {
   nicknameExists,
   nicknameNotExists,
   UserNotFound,
+  fieldNull,
+  fieldInvalid,
 };

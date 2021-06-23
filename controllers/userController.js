@@ -1,11 +1,7 @@
 const user = require('../services/userService');
 const statusMessages = require('../utilities/listStatusMessages');
 
-const returnStatusCodeError = (result, res) => res.status(result.statusCode).json({
-  error: {
-    message: result.error.message,
-  },
-});
+const returnStatusCodeError = (result, res) => res.status(result.statusCode).json(result.error);
 
 const findById = async (req, res) => {
   try {
@@ -36,8 +32,8 @@ const deleteById = async (req, res) => {
 
 const findByNickName = async (req, res) => {
   try {
-    const { nick } = req.query;
-    const result = await user.findByNickName(nick);
+    const { q } = req.query;
+    const result = await user.findByNickName(q);
     if (result.error) return returnStatusCodeError(result, res);
     return res.status(statusMessages.sucess).json(result);
   } catch (error) {
@@ -66,9 +62,7 @@ const updateNickName = async (req, res) => {
 const updateLastNameAndAddress = async (req, res) => {
   try {
     const { lastname, address } = req.body;
-
     const { id } = req.params;
-
     const result = await user.updateLastNameAndAddress(lastname, address, id);
     if (result.error) return returnStatusCodeError(result, res);
     return res.status(statusMessages.update).json(result);
