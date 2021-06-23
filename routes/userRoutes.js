@@ -9,6 +9,9 @@ const {
   checkNameMiddleware,
   checkLastNameMiddleware,
   checkAddressMiddleare,
+  checkNickNameExitsMiddleware,
+  checkSizeBioMiddleware,
+  checkSizeNickNameMiddleware,
 } = require('../middlewares/userMiddleware');
 
 route.get('/search', user.findByNameOrLastName);
@@ -19,8 +22,15 @@ route.post('/register',
   checkLastNameMiddleware,
   checkAddressMiddleare,
   checkNickNameMiddleware,
+  checkSizeBioMiddleware,
+  checkNickNameExitsMiddleware,
+  checkSizeNickNameMiddleware,
   user.createUser);
-route.put('/updatenick/:id', checkNickNameMiddleware, user.updateNickName);
+route.put('/updatenick/:id',
+  checkNickNameMiddleware,
+  checkNickNameExitsMiddleware,
+  checkSizeNickNameMiddleware,
+  user.updateNickName);
 route.put('/:id',
   checkLastNameMiddleware,
   checkAddressMiddleare,

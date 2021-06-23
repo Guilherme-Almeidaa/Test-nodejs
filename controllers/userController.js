@@ -1,13 +1,17 @@
 const user = require('../services/userService');
 const statusMessages = require('../utilities/listStatusMessages');
 
-const returnStatusCodeError = (result, res) => res.status(result.statusCode).json(result.error);
+const returnStatusCodeError = (result, res) => {
+  const { statusCode, errorMessage } = result;
+  return res.status(statusCode).json(errorMessage);
+};
 
 const findById = async (req, res) => {
   try {
     const { id } = req.params;
-    const result = user.findById(id);
-    return res.status(statusMessages.sucess).json(result);
+    const result = await user.findById(id);
+    if (result.errorMessage) return returnStatusCodeError(result, res);
+    return res.status(statusMessages.success).json(result);
   } catch (error) {
     console.log(error.message);
     return res.status(statusMessages.internalError).json({
@@ -20,8 +24,8 @@ const deleteById = async (req, res) => {
   try {
     const { id } = req.params;
     const result = await user.deleteById(id);
-    if (result.error) return returnStatusCodeError(result, res);
-    return res.status(statusMessages.sucess).end();
+    if (result.errorMessage) return returnStatusCodeError(result, res);
+    return res.status(statusMessages.success).end();
   } catch (error) {
     console.log(error.message);
     return res.status(statusMessages.internalError).json({
@@ -34,8 +38,8 @@ const findByNickName = async (req, res) => {
   try {
     const { q } = req.query;
     const result = await user.findByNickName(q);
-    if (result.error) return returnStatusCodeError(result, res);
-    return res.status(statusMessages.sucess).json(result);
+    if (result.errorMessage) return returnStatusCodeError(result, res);
+    return res.status(statusMessages.success).json(result);
   } catch (error) {
     console.log(error.message);
     return res.status(statusMessages.internalError).json({
@@ -49,7 +53,7 @@ const updateNickName = async (req, res) => {
     const { nickname } = req.body;
     const { id } = req.params;
     const result = await user.updateNickName(nickname, id);
-    if (result.error) return returnStatusCodeError(result, res);
+    if (result.errorMessage) return returnStatusCodeError(result, res);
     return res.status(statusMessages.update).json(result);
   } catch (error) {
     console.log(error.message);
@@ -64,7 +68,7 @@ const updateLastNameAndAddress = async (req, res) => {
     const { lastname, address } = req.body;
     const { id } = req.params;
     const result = await user.updateLastNameAndAddress(lastname, address, id);
-    if (result.error) return returnStatusCodeError(result, res);
+    if (result.errorMessage) return returnStatusCodeError(result, res);
     return res.status(statusMessages.update).json(result);
   } catch (error) {
     console.log(error.message);
@@ -78,8 +82,8 @@ const findByNameOrLastName = async (req, res) => {
   try {
     const { q } = req.query;
     const result = await user.findByNameOrLastName(q);
-    if (result.error) return returnStatusCodeError(result, res);
-    return res.status(statusMessages.sucess)
+    if (result.errorMessage) return returnStatusCodeError(result, res);
+    return res.status(statusMessages.success)
       .json(result);
   } catch (error) {
     console.log(error.message);

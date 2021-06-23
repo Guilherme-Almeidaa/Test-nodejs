@@ -4,12 +4,13 @@ const statusMessages = require('../utilities/listStatusMessages');
 
 const findById = async (id) => {
   const user = await User.findByPk(id);
+  if (!user) return statusMessages.UserNotFound;
   return user;
 };
 
 const deleteById = async (id) => {
   const checkUserExists = await findById(id);
-  if (!checkUserExists) return statusMessages.UserNotFound;
+  if (checkUserExists.errorMessage) return statusMessages.UserNotFound;
   await User.destroy({ where: { id } });
   return true;
 };
