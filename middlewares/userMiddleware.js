@@ -11,14 +11,20 @@ const checkNickNameExitsMiddleware = async (req, res, next) => {
   const { nickname } = req.body;
   const check = await user.findByNickName(nickname);
   const { statusCode, errorMessage } = nicknameExists;
-  if (!check.errorMessage) return res.status(statusCode).json(errorMessage);
+  if (!check.errorMessage) {
+    res.status(statusCode);
+    return res.json(errorMessage);
+  }
   return next();
 };
 
 const checkSizeNickNameMiddleware = (req, res, next) => {
   const { nickname } = req.body;
   const { statusCode, errorMessage } = invalidSizeNick;
-  if (nickname.length > 30) return res.status(statusCode).json(errorMessage);
+  if (nickname.length > 30) {
+    res.status(statusCode);
+    return res.json(errorMessage);
+  }
   return next();
 };
 
@@ -26,63 +32,69 @@ const checkSizeBioMiddleware = (req, res, next) => {
   const { bio } = req.body;
   if (!bio) return next();
   const { statusCode, errorMessage } = invalidSizeBio;
-  if (bio.length > 100) return res.status(statusCode).json(errorMessage);
+  if (bio.length > 100) {
+    res.status(statusCode);
+    return res.json(errorMessage);
+  }
   return next();
 };
 
 const checkNickNameMiddleware = (req, res, next) => {
   const { nickname } = req.body;
-  if (!nickname) {
+  if (nickname === undefined) {
     const mesageReturnIfNull = fieldNull('nickname');
-    return res.status(mesageReturnIfNull.statusCode)
-      .json(mesageReturnIfNull.errorMessage);
+    res.status(mesageReturnIfNull.statusCode);
+    return res.json(mesageReturnIfNull.errorMessage);
   }
-  if (nickname === '') {
+  if (nickname.length === 0) {
     const messageReturnIfInvalid = fieldInvalid('nickname');
-    return res.status(messageReturnIfInvalid.statusCode)
-      .json(messageReturnIfInvalid.errorMessage);
+    res.status(messageReturnIfInvalid.statusCode);
+    return res.json(messageReturnIfInvalid.errorMessage);
   }
   return next();
 };
 
 const checkNameMiddleware = (req, res, next) => {
   const { name } = req.body;
-  if (!name) {
+  if (name === undefined) {
     const mesageReturnIfNull = fieldNull('name');
-    return res.status(mesageReturnIfNull.statusCode).json(mesageReturnIfNull.errorMessage);
+    res.status(mesageReturnIfNull.statusCode);
+    return res.json(mesageReturnIfNull.errorMessage);
   }
-  if (name === '') {
+  if (name.length === 0) {
     const messageReturnIfInvalid = fieldInvalid('name');
-    return res.status(messageReturnIfInvalid.statusCode)
-      .json(messageReturnIfInvalid.errorMessage);
+    res.status(messageReturnIfInvalid.statusCode);
+    return res.json(messageReturnIfInvalid.errorMessage);
   }
   return next();
 };
 
 const checkLastNameMiddleware = (req, res, next) => {
   const { lastname } = req.body;
-  if (!lastname) {
+  if (lastname === undefined) {
     const mesageReturn = fieldNull('lastname');
-    return res.status(mesageReturn.statusCode).json(mesageReturn.errorMessage);
+    res.status(mesageReturn.statusCode);
+    return res.json(mesageReturn.errorMessage);
   }
-  if (lastname === '') {
+  if (lastname.length === 0) {
     const messageReturnIfInvalid = fieldInvalid('lastname');
-    return res.status(messageReturnIfInvalid.statusCode)
-      .json(messageReturnIfInvalid.errorMessage);
+    res.status(messageReturnIfInvalid.statusCode);
+    return res.json(messageReturnIfInvalid.errorMessage);
   }
   return next();
 };
 
 const checkAddressMiddleare = (req, res, next) => {
   const { address } = req.body;
-  if (!address) {
+  if (address === undefined) {
     const mesageReturn = fieldNull('address');
-    return res.status(mesageReturn.statusCode).json(mesageReturn.errorMessage);
+    res.status(mesageReturn.statusCode);
+    return res.json(mesageReturn.errorMessage);
   }
-  if (address === '') {
+  if (address.length === 0) {
     const messageReturnIfInvalid = fieldInvalid('address');
-    return res.status(messageReturnIfInvalid.statusCode)
-      .json(messageReturnIfInvalid.errorMessage);
+    res.status(messageReturnIfInvalid.statusCode);
+    return res.json(messageReturnIfInvalid.errorMessage);
   }
   return next();
 };

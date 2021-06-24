@@ -14,8 +14,7 @@ const {
   checkSizeNickNameMiddleware,
 } = require('../middlewares/userMiddleware');
 
-
-route.get('/',user.getAll);
+route.get('/', user.getAll);
 route.get('/search', user.findByNameOrLastName);
 route.get('/searchnick', user.findByNickName);
 route.get('/:id', user.findById);

@@ -1,12 +1,8 @@
-const notProcessed = 422;
 const update = 201;
 const success = 200;
 const notFound = 404;
 const conflict = 409;
 const badRequest = 400;
-const unauthorized = 401;
-const notContent = 204;
-const forbidden = 403;
 const internalError = 500;
 
 const nicknameExists = {

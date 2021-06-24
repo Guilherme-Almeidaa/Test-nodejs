@@ -2,11 +2,10 @@ const { Op } = require('sequelize');
 const { User } = require('../models');
 const statusMessages = require('../utilities/listStatusMessages');
 
-
 const getAll = async () => {
   const users = await User.findAll();
   return users;
-}
+};
 
 const findById = async (id) => {
   const user = await User.findByPk(id);
@@ -48,9 +47,9 @@ const updateLastNameAndAddress = async (lastname, address, id) => {
   const [userUpdate] = await User.update({
     lastname, address, updateAt: new Date(),
   },
-    {
-      where: { id },
-    });
+  {
+    where: { id },
+  });
 
   if (!userUpdate) return statusMessages.UserNotFound;
   const result = await User.findByPk(id);
