@@ -11,7 +11,7 @@ const checkNickNameExitsMiddleware = async (req, res, next) => {
   const { nickname } = req.body;
   const check = await user.findByNickName(nickname);
   const { statusCode, errorMessage } = nicknameExists;
-  if (!check.error) return res.status(statusCode).json(errorMessage);
+  if (!check.errorMessage) return res.status(statusCode).json(errorMessage);
   return next();
 };
 

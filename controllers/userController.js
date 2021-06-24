@@ -3,18 +3,36 @@ const statusMessages = require('../utilities/listStatusMessages');
 
 const returnStatusCodeError = (result, res) => {
   const { statusCode, errorMessage } = result;
-  return res.status(statusCode).json(errorMessage);
+  res.status(statusCode)
+  return res.json(errorMessage);
 };
+
+const getAll = async (_req, res) => {
+  try {
+    const result = await user.getAll();
+    res.status(statusMessages.success)
+    return res.json(result);
+
+  } catch (error) {
+    console.log(error.message);
+    res.status(statusMessages.internalError)
+    return res.json({
+      message: error.message,
+    });
+  }
+}
 
 const findById = async (req, res) => {
   try {
     const { id } = req.params;
     const result = await user.findById(id);
     if (result.errorMessage) return returnStatusCodeError(result, res);
-    return res.status(statusMessages.success).json(result);
+    res.status(statusMessages.success)
+    return res.json(result);
   } catch (error) {
     console.log(error.message);
-    return res.status(statusMessages.internalError).json({
+    res.status(statusMessages.internalError)
+    return res.json({
       message: error.message,
     });
   }
@@ -28,7 +46,8 @@ const deleteById = async (req, res) => {
     return res.status(statusMessages.success).end();
   } catch (error) {
     console.log(error.message);
-    return res.status(statusMessages.internalError).json({
+    res.status(statusMessages.internalError)
+    return res.json({
       message: error.message,
     });
   }
@@ -39,10 +58,12 @@ const findByNickName = async (req, res) => {
     const { q } = req.query;
     const result = await user.findByNickName(q);
     if (result.errorMessage) return returnStatusCodeError(result, res);
-    return res.status(statusMessages.success).json(result);
+    res.status(statusMessages.success)
+    return res.json(result);
   } catch (error) {
     console.log(error.message);
-    return res.status(statusMessages.internalError).json({
+    res.status(statusMessages.internalError)
+    return res.json({
       message: error.message,
     });
   }
@@ -54,10 +75,12 @@ const updateNickName = async (req, res) => {
     const { id } = req.params;
     const result = await user.updateNickName(nickname, id);
     if (result.errorMessage) return returnStatusCodeError(result, res);
-    return res.status(statusMessages.update).json(result);
+    res.status(statusMessages.update)
+    return res.json(result);
   } catch (error) {
     console.log(error.message);
-    return res.status(statusMessages.internalError).json({
+    res.status(statusMessages.internalError)
+    return res.json({
       message: error.message,
     });
   }
@@ -69,10 +92,12 @@ const updateLastNameAndAddress = async (req, res) => {
     const { id } = req.params;
     const result = await user.updateLastNameAndAddress(lastname, address, id);
     if (result.errorMessage) return returnStatusCodeError(result, res);
-    return res.status(statusMessages.update).json(result);
+    res.status(statusMessages.update)
+    return res.json(result);
   } catch (error) {
     console.log(error.message);
-    return res.status(statusMessages.internalError).json({
+    res.status(statusMessages.internalError)
+    return res.json({
       message: error.message,
     });
   }
@@ -83,11 +108,12 @@ const findByNameOrLastName = async (req, res) => {
     const { q } = req.query;
     const result = await user.findByNameOrLastName(q);
     if (result.errorMessage) return returnStatusCodeError(result, res);
-    return res.status(statusMessages.success)
-      .json(result);
+    res.status(statusMessages.success)
+    return res.json(result);
   } catch (error) {
     console.log(error.message);
-    return res.status(statusMessages.internalError).json({
+    res.status(statusMessages.internalError)
+    return res.json({
       message: error.message,
     });
   }
@@ -95,16 +121,16 @@ const findByNameOrLastName = async (req, res) => {
 
 const createUser = async (req, res) => {
   try {
-    const {
-      name, lastname, nickname, address, bio,
-    } = req.body;
-    const result = await user.createUser(name, lastname, nickname, address, bio);
-    return res.status(statusMessages.update).json(result);
+
+    const result = await user.createUser(req.body);
+    res.status(statusMessages.update)
+    return res.json(result);
   } catch (error) {
     console.log(error.message);
-    return res.status(statusMessages.internalError).json({
+    res.status(statusMessages.internalError)
+    return res.json({
       message: error.message,
-    });
+    });;
   }
 };
 
@@ -116,4 +142,5 @@ module.exports = {
   findById,
   updateNickName,
   deleteById,
+  getAll,
 };
