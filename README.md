@@ -12,6 +12,11 @@
     <h4> <code>npx sequelize-cli db:create</code></h4>
     <h4> <code>npx sequelize-cli db:migrate</code></h4>
     <h4> <code>npx sequelize-cli db:seed:all</code></h4>
+    <h4> <code>npm start</code></h4>
+  </div>
+    <div>
+    <h1>Verificar cobertura de testes</h1>
+  <h4> <code>npm run test-coverage</code></h4>
   </div>
   <div>
     <h1>Requisições</h1>

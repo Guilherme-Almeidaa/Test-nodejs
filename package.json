@@ -9,8 +9,7 @@
     "test": "jest --detectOpenHandles",
     "start": "node index.js",
     "nodemon": "nodemon index.js",
-    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json .",
-    "test-coverage": "jest --coverage --watchAll=false"
+    "test-coverage": "jest --coverage --watchAll=false --detectOpenHandles"
   },
   "devDependencies": {
     "eslint": "7.2.0",
