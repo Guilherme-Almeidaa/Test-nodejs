@@ -16,7 +16,7 @@ const {
 
 route.get('/', user.getAll);
 route.get('/search', user.findByNameOrLastName);
-route.get('/searchnick', user.findByNickName);
+route.get('/nickname', user.findByNickName);
 route.get('/:id', user.findById);
 route.post('/register',
   checkNameMiddleware,

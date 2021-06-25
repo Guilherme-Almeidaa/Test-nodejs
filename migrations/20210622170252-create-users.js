@@ -17,7 +17,7 @@ module.exports = {
       },
       nickname: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(30),
         unique: true,
       },
       address: {

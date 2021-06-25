@@ -15,7 +15,7 @@ describe('Testing services', () => {
     shell.exec('npx sequelize-cli db:create && npx sequelize-cli db:migrate $');
   })
 
-  
+
   describe('Testing getAll', () => {
     it('Return all users', async () => {
       const users = await userService.getAll();
