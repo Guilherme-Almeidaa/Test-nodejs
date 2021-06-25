@@ -48,7 +48,7 @@
         <img src="./images/register.png" width="500px" alt="example">
       </div>
       <div>
-        <h3>PUT <mark>/users/register</mark> Atualiza o nickname informado pelo corpo da requisição E retorna o usuário
+        <h3>PUT <mark>/users/register</mark> Atualiza o nickname informado pelo corpo da requisição e retorna o usuário
           atualizado.</h3>
         <br>
         <img src="./images/updatenick.png" width="500px" alt="example">
