@@ -49,7 +49,7 @@
         <img src="./images/updatenick.png" width="500px" alt="example">
       </div>
       <div>
-        <h3>PUT <mark>/users/2</mark> Atualiza o lastname e address informado pelo corpo da requisição E retorna o usuário
+        <h3>PUT <mark>/users/2</mark> Atualiza o lastname e address informado pelo corpo da requisição e retorna o usuário
           atualizado.</h3>
         <br>
         <img src="./images/update.png" width="500px" alt="example">
