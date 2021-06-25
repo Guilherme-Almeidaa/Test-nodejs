@@ -23,44 +23,44 @@
     <h2>Exemplos</h2>
     <div>
       <div>
-        <h3>GET <mark>/users</mark> Retorna todos os usuários cadastrados.</h3>
+        <h3>GET <code>/users</code> Retorna todos os usuários cadastrados.</h3>
         <br>
         <img src="./images/users.png" width="300px" height="250px" alt="example">
       </div>
       <div>
-        <h3>GET <mark>/users/2</mark> Retorna o usuário pelo campo "id".</h3>
+        <h3>GET <code>/users/2</code> Retorna o usuário pelo campo "id".</h3>
         <br>
         <img src="./images/users:id.png" width="300px" alt="example">
       </div>
       <div>
-        <h3>GET <mark>/users/search?q=Guilherme</mark> Retorna o usuário pelo campo "nome" ou "lastname".</h3>
+        <h3>GET <code>/users/search?q=Guilherme</code> Retorna o usuário pelo campo "nome" ou "lastname".</h3>
         <br>
         <img src="./images/search.png" width="300px" alt="example">
       </div>
       <div>
-        <h3>GET <mark>/users/nickname?q=Zeze</mark> Retorna o usuário pelo campo "nickname".</h3>
+        <h3>GET <code>/users/nickname?q=Zeze</code> Retorna o usuário pelo campo "nickname".</h3>
         <br>
         <img src="./images/nickname.png" width="300px" alt="example">
       </div>
       <div>
-        <h3>POST <mark>/users/register</mark> Cadastra e retorna o usuário informado pelo corpo da requisição.</h3>
+        <h3>POST <code>/users/register</code> Cadastra e retorna o usuário informado pelo corpo da requisição.</h3>
         <br>
         <img src="./images/register.png" width="500px" alt="example">
       </div>
       <div>
-        <h3>PUT <mark>/users/register</mark> Atualiza o nickname informado pelo corpo da requisição e retorna o usuário
+        <h3>PUT <code>/users/register</code> Atualiza o nickname informado pelo corpo da requisição e retorna o usuário
           atualizado.</h3>
         <br>
         <img src="./images/updatenick.png" width="500px" alt="example">
       </div>
       <div>
-        <h3>PUT <mark>/users/2</mark> Atualiza o lastname e address informado pelo corpo da requisição e retorna o usuário
+        <h3>PUT <code>/users/2</code> Atualiza o lastname e address informado pelo corpo da requisição e retorna o usuário
           atualizado.</h3>
         <br>
         <img src="./images/update.png" width="500px" alt="example">
       </div>
       <div>
-        <h3>DELETE <mark>/users/3</mark> Deleta o usuário pelo id e não tem retorno.</h3>
+        <h3>DELETE <code>/users/3</code> Deleta o usuário pelo id e não tem retorno.</h3>
         <br>
       </div>
     </div>
