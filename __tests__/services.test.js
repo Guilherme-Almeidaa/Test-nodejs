@@ -1,9 +1,8 @@
-const userService = require('../services/userService');
 const shell = require('shelljs');
+const userService = require('../services/userService');
 const { dataTest, newUser, updatedDataTest } = require('../configTests/dataTest');
 const expectedReturns = require('../configTests/expectedReturns');
 const { User } = require('../models');
-
 
 describe('Testing services', () => {
   beforeEach(async () => {
@@ -13,8 +12,7 @@ describe('Testing services', () => {
 
   beforeAll(async () => {
     shell.exec('npx sequelize-cli db:create && npx sequelize-cli db:migrate $');
-  })
-
+  });
 
   describe('Testing getAll', () => {
     it('Return all users', async () => {

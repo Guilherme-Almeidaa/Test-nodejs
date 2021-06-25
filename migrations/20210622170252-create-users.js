@@ -25,7 +25,7 @@ module.exports = {
         type: Sequelize.STRING,
       },
       bio: {
-        type: Sequelize.TEXT,
+        type: Sequelize.STRING(100),
       },
       createdAt: {
         allowNull: false,

@@ -45,11 +45,11 @@ const updateNickName = async (nickname, id) => {
 
 const updateLastNameAndAddress = async (lastname, address, id) => {
   const [userUpdate] = await User.update({
-    lastname, address, updateAt: new Date(),
+    lastname, address,
   },
-  {
-    where: { id },
-  });
+    {
+      where: { id },
+    });
 
   if (!userUpdate) return statusMessages.UserNotFound;
   const result = await User.findByPk(id);
