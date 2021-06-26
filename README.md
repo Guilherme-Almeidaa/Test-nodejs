@@ -9,9 +9,7 @@
     <code> MYSQL_NAME='Test-Nodejs'</code><br>
     <h3>No terminal rode os seguintes comandos:</h3>
     <h4> <code>npm install</code></h4>
-    <h4> <code>npx sequelize-cli db:create</code></h4>
-    <h4> <code>npx sequelize-cli db:migrate</code></h4>
-    <h4> <code>npx sequelize-cli db:seed:all</code></h4>
+    <h4> <code>npm run config-data</code></h4>
     <h4> <code>npm start</code></h4>
   </div>
     <div>

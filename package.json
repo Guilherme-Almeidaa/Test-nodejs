@@ -9,7 +9,8 @@
     "test": "jest --detectOpenHandles",
     "start": "node index.js",
     "nodemon": "nodemon index.js",
-    "test-coverage": "jest --coverage --watchAll=false --detectOpenHandles"
+    "test-coverage": "jest --coverage --watchAll=false --detectOpenHandles",
+    "config-data":"npx sequelize-cli db:create && npx sequelize-cli db:migrate && npx sequelize-cli db:seed:all"
   },
   "devDependencies": {
     "eslint": "7.2.0",
