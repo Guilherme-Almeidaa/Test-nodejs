@@ -30,7 +30,7 @@
       <div>
         <h3>GET <code>/users/2</code> Retorna o usuário pelo campo "id".</h3>
         <br>
-        <img src="./images/users:id.png" width="300px" alt="example">
+        <img src="./images/usersid.png" width="300px" alt="example">
       </div>
       <div>
         <h3>GET <code>/users/search?q=Guilherme</code> Retorna o usuário pelo campo "nome" ou "lastname".</h3>
